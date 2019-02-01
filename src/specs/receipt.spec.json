@@ -1,0 +1,1711 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "The API Set of WMS-APP for WISE. We Follow Swagger Specification. Here is the detail:[http://swagger.io/specification/]",
+    "version" : "V2",
+    "title" : "WMS-APP API SET"
+  },
+  "tags" : [ {
+    "name" : "receipt"
+  } ],
+  "paths" : {
+    "/inbound/receipt/{receiptId}/cancel" : {
+      "put" : {
+        "tags" : [ "receipt" ],
+        "summary" : "Cancel Receipt",
+        "description" : "",
+        "operationId" : "cancel",
+        "produces" : [ "application/json", "application/xml" ],
+        "parameters" : [ {
+          "name" : "receiptId",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/ReceiptReasonUpdate"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/IdResponse"
+            }
+          }
+        }
+      }
+    },
+    "/inbound/receipt/{receiptId}/reopen" : {
+      "put" : {
+        "tags" : [ "receipt" ],
+        "summary" : "Reopen Receipt",
+        "description" : "",
+        "operationId" : "reopen",
+        "produces" : [ "application/json", "application/xml" ],
+        "parameters" : [ {
+          "name" : "receiptId",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/IdResponse"
+            }
+          }
+        }
+      }
+    },
+    "/inbound/receipt/search-by-paging" : {
+      "post" : {
+        "tags" : [ "receipt" ],
+        "operationId" : "searchByPaging",
+        "produces" : [ "application/json", "application/xml" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/ReceiptSearch"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/ReceiptPagingResult"
+            },
+            "headers" : { }
+          }
+        }
+      }
+    },
+    "/inbound/receipt/search-by-property" : {
+      "post" : {
+        "tags" : [ "receipt" ],
+        "summary" : "Search receipt Id by Receipt Property",
+        "description" : "",
+        "operationId" : "getReceiptIdByProperty",
+        "produces" : [ "application/json", "application/xml" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/ReceiptPropertySearch"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/IdsResponse"
+            }
+          }
+        }
+      }
+    },
+    "/inbound/receipt/create-shipment/{receiptId}" : {
+      "put" : {
+        "tags" : [ "receipt" ],
+        "summary" : "Create Shipment By receiptId",
+        "description" : "",
+        "operationId" : "createShipment",
+        "produces" : [ "application/json", "application/xml" ],
+        "parameters" : [ {
+          "name" : "receiptId",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/IdResponse"
+            }
+          }
+        }
+      }
+    },
+    "/inbound/receipt/{receiptId}/force-close" : {
+      "put" : {
+        "tags" : [ "receipt" ],
+        "summary" : "Force Close Receipt",
+        "description" : "",
+        "operationId" : "forceClose",
+        "produces" : [ "application/json", "application/xml" ],
+        "parameters" : [ {
+          "name" : "receiptId",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/ReceiptReasonUpdate"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/IdResponse"
+            }
+          }
+        }
+      }
+    },
+    "/inbound/receipt/match-carton-by-transload/{receiptId}" : {
+      "get" : {
+        "tags" : [ "receipt" ],
+        "summary" : "match carton by transload",
+        "description" : "",
+        "operationId" : "matchCartonByTransload",
+        "produces" : [ "application/json", "application/xml" ],
+        "parameters" : [ {
+          "name" : "receiptId",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/MatchCartonResult"
+            }
+          }
+        }
+      }
+    },
+    "/inbound/receipt/{receiptId}/item-line" : {
+      "post" : {
+        "tags" : [ "receipt" ],
+        "summary" : "Add ItemLine",
+        "description" : "",
+        "operationId" : "addItemLine",
+        "produces" : [ "application/json", "application/xml" ],
+        "parameters" : [ {
+          "name" : "receiptId",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/ReceiptItemLine"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/IdResponse"
+            }
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "receipt" ],
+        "summary" : "Remove ItemLine by receipt",
+        "description" : "",
+        "operationId" : "removeItemLineByReceipt",
+        "produces" : [ "application/json", "application/xml" ],
+        "parameters" : [ {
+          "name" : "receiptId",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "default" : {
+            "description" : "successful operation"
+          }
+        }
+      }
+    },
+    "/inbound/receipt/search-for-customer-app" : {
+      "post" : {
+        "tags" : [ "receipt" ],
+        "summary" : "Search Receipt For Customer App",
+        "description" : "",
+        "operationId" : "searchForCustomerApp",
+        "produces" : [ "application/json", "application/xml" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/ReceiptSearch"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/ReceiptView"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/inbound/receipt/item-line/search" : {
+      "post" : {
+        "tags" : [ "receipt" ],
+        "summary" : "Search Receipt Itemlines",
+        "description" : "",
+        "operationId" : "searchItemLine",
+        "produces" : [ "application/json", "application/xml" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/ReceiptItemLineSearch"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/ReceiptItemLineView"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/inbound/receipt/{receiptId}/item-line/{itemLineId}" : {
+      "get" : {
+        "tags" : [ "receipt" ],
+        "summary" : "Get ItemLine by receiptId and itemLineId",
+        "description" : "",
+        "operationId" : "getItemLine",
+        "produces" : [ "application/json", "application/xml" ],
+        "parameters" : [ {
+          "name" : "receiptId",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "itemLineId",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/ReceiptItemLineView"
+            }
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "receipt" ],
+        "summary" : "Update ItemLine",
+        "description" : "",
+        "operationId" : "updateItemLine",
+        "produces" : [ "application/json", "application/xml" ],
+        "parameters" : [ {
+          "name" : "receiptId",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "itemLineId",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/ReceiptItemLine"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/IdResponse"
+            }
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "receipt" ],
+        "summary" : "Remove ItemLine",
+        "description" : "",
+        "operationId" : "removeItemLine",
+        "produces" : [ "application/json", "application/xml" ],
+        "parameters" : [ {
+          "name" : "receiptId",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "itemLineId",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "default" : {
+            "description" : "successful operation"
+          }
+        }
+      }
+    },
+    "/inbound/receipt/search" : {
+      "post" : {
+        "tags" : [ "receipt" ],
+        "summary" : "Search Receipt",
+        "description" : "",
+        "operationId" : "searchReceipt",
+        "produces" : [ "application/json", "application/xml" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/ReceiptSearch"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/ReceiptView"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/inbound/receipt/item-line/{itemLineId}" : {
+      "get" : {
+        "tags" : [ "receipt" ],
+        "summary" : "Get ItemLine by itemLineId",
+        "description" : "",
+        "operationId" : "getItemLineById",
+        "produces" : [ "application/json", "application/xml" ],
+        "parameters" : [ {
+          "name" : "itemLineId",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/ReceiptItemLineView"
+            }
+          }
+        }
+      }
+    },
+    "/inbound/receipt/{receiptId}" : {
+      "get" : {
+        "tags" : [ "receipt" ],
+        "summary" : "Get Receipt By ReceiptId",
+        "description" : "",
+        "operationId" : "get",
+        "produces" : [ "application/json", "application/xml" ],
+        "parameters" : [ {
+          "name" : "receiptId",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/ReceiptView"
+            }
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "receipt" ],
+        "summary" : "Update Receipt",
+        "description" : "",
+        "operationId" : "update",
+        "produces" : [ "application/json", "application/xml" ],
+        "parameters" : [ {
+          "name" : "receiptId",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/ReceiptUpdate"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/IdResponse"
+            }
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "receipt" ],
+        "summary" : "Delete Receipt By ReceiptId",
+        "description" : "",
+        "operationId" : "delete",
+        "produces" : [ "application/json", "application/xml" ],
+        "parameters" : [ {
+          "name" : "receiptId",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "default" : {
+            "description" : "successful operation"
+          }
+        }
+      }
+    },
+    "/inbound/receipt" : {
+      "post" : {
+        "tags" : [ "receipt" ],
+        "summary" : "Create Receipt",
+        "description" : "",
+        "operationId" : "create",
+        "produces" : [ "application/json", "application/xml" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/ReceiptCreate"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/IdResponse"
+            }
+          }
+        }
+      }
+    },
+    "/inbound/receipt/{receiptId}/close" : {
+      "put" : {
+        "tags" : [ "receipt" ],
+        "summary" : "Close Receipt",
+        "description" : "",
+        "operationId" : "close",
+        "produces" : [ "application/json", "application/xml" ],
+        "parameters" : [ {
+          "name" : "receiptId",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/IdResponse"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "IdResponse" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "string"
+        }
+      }
+    },
+    "ReceiptReasonUpdate" : {
+      "type" : "object",
+      "properties" : {
+        "reason" : {
+          "type" : "string"
+        }
+      }
+    },
+    "AddressView" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "string"
+        },
+        "tags" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string",
+            "xml" : {
+              "name" : "tags"
+            },
+            "enum" : [ "BILL_TO", "SHIP_TO", "STORE", "SOLD_TO", "PICK_FROM" ]
+          }
+        },
+        "organizationId" : {
+          "type" : "string"
+        },
+        "organizationName" : {
+          "type" : "string"
+        },
+        "referenceNo" : {
+          "type" : "string"
+        },
+        "toHome" : {
+          "type" : "boolean"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "country" : {
+          "type" : "string"
+        },
+        "state" : {
+          "type" : "string"
+        },
+        "city" : {
+          "type" : "string"
+        },
+        "zipCode" : {
+          "type" : "string"
+        },
+        "fax" : {
+          "type" : "string"
+        },
+        "address1" : {
+          "type" : "string"
+        },
+        "address2" : {
+          "type" : "string"
+        },
+        "batchCode" : {
+          "type" : "string"
+        },
+        "contact" : {
+          "type" : "string"
+        },
+        "phone" : {
+          "type" : "string"
+        },
+        "extension" : {
+          "type" : "string"
+        },
+        "email" : {
+          "type" : "string"
+        },
+        "storeNo" : {
+          "type" : "string"
+        },
+        "shorthand" : {
+          "type" : "string"
+        },
+        "createdBy" : {
+          "type" : "string"
+        },
+        "createdWhen" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "updatedBy" : {
+          "type" : "string"
+        },
+        "updatedWhen" : {
+          "type" : "string",
+          "format" : "date-time"
+        }
+      }
+    },
+    "Carton" : {
+      "type" : "object",
+      "properties" : {
+        "cartonNo" : {
+          "type" : "string"
+        },
+        "poundPerCarton" : {
+          "type" : "number",
+          "format" : "double"
+        },
+        "qty" : {
+          "type" : "number",
+          "format" : "double"
+        },
+        "lotNo" : {
+          "type" : "string"
+        },
+        "dynamicFields" : {
+          "$ref" : "#/definitions/DynamicFields"
+        }
+      }
+    },
+    "DynamicFields" : {
+      "type" : "object",
+      "properties" : {
+        "dynTxtPropertyValue01" : {
+          "type" : "string"
+        },
+        "dynTxtPropertyValue02" : {
+          "type" : "string"
+        },
+        "dynTxtPropertyValue03" : {
+          "type" : "string"
+        },
+        "dynTxtPropertyValue04" : {
+          "type" : "string"
+        },
+        "dynTxtPropertyValue05" : {
+          "type" : "string"
+        },
+        "dynTxtPropertyValue06" : {
+          "type" : "string"
+        },
+        "dynTxtPropertyValue07" : {
+          "type" : "string"
+        },
+        "dynTxtPropertyValue08" : {
+          "type" : "string"
+        },
+        "dynTxtPropertyValue09" : {
+          "type" : "string"
+        },
+        "dynTxtPropertyValue10" : {
+          "type" : "string"
+        },
+        "dynTxtPropertyValue11" : {
+          "type" : "string"
+        },
+        "dynTxtPropertyValue12" : {
+          "type" : "string"
+        },
+        "dynTxtPropertyValue13" : {
+          "type" : "string"
+        },
+        "dynTxtPropertyValue14" : {
+          "type" : "string"
+        },
+        "dynTxtPropertyValue15" : {
+          "type" : "string"
+        },
+        "dynDatePropertyValue01" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "dynDatePropertyValue02" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "dynDatePropertyValue03" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "dynDatePropertyValue04" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "dynDatePropertyValue05" : {
+          "type" : "string",
+          "format" : "date-time"
+        }
+      }
+    },
+    "PagingResultParam" : {
+      "type" : "object",
+      "properties" : {
+        "totalCount" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "pageNo" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "totalPage" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "startIndex" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "endIndex" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "limit" : {
+          "type" : "integer",
+          "format" : "int64"
+        }
+      }
+    },
+    "ReceiptItemLineView" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "string"
+        },
+        "receiptId" : {
+          "type" : "string"
+        },
+        "itemSpecId" : {
+          "type" : "string"
+        },
+        "productId" : {
+          "type" : "string"
+        },
+        "lotNo" : {
+          "type" : "string"
+        },
+        "supplierId" : {
+          "type" : "string"
+        },
+        "unitId" : {
+          "type" : "string"
+        },
+        "qty" : {
+          "type" : "number",
+          "format" : "double"
+        },
+        "receivedQty" : {
+          "type" : "number",
+          "format" : "double"
+        },
+        "receivedUnitId" : {
+          "type" : "string"
+        },
+        "palletQty" : {
+          "type" : "number",
+          "format" : "double"
+        },
+        "source" : {
+          "type" : "string",
+          "enum" : [ "EDI", "WEB", "ANDROID", "EXTERNAL_WMS" ]
+        },
+        "note" : {
+          "type" : "string"
+        },
+        "snList" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string",
+            "xml" : {
+              "name" : "snList"
+            }
+          }
+        },
+        "poLineNo" : {
+          "type" : "string"
+        },
+        "companyId" : {
+          "type" : "string"
+        },
+        "packagingTypeSpecId" : {
+          "type" : "string"
+        },
+        "dynamicFields" : {
+          "$ref" : "#/definitions/DynamicFields"
+        },
+        "cartons" : {
+          "type" : "array",
+          "items" : {
+            "xml" : {
+              "name" : "cartons"
+            },
+            "$ref" : "#/definitions/Carton"
+          }
+        },
+        "expirationDate" : {
+          "type" : "string",
+          "format" : "date-time"
+        }
+      }
+    },
+    "ReceiptPagingResult" : {
+      "type" : "object",
+      "properties" : {
+        "paging" : {
+          "$ref" : "#/definitions/PagingResultParam"
+        },
+        "orders" : {
+          "type" : "array",
+          "xml" : {
+            "name" : "receipts"
+          },
+          "items" : {
+            "xml" : {
+              "name" : "receipts"
+            },
+            "$ref" : "#/definitions/ReceiptView"
+          }
+        }
+      }
+    },
+    "ReceiptView" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "string"
+        },
+        "status" : {
+          "type" : "string",
+          "enum" : [ "IMPORTED", "OPEN", "APPOINTMENT_MADE", "IN_YARD", "IN_PROGRESS", "TASK_COMPLETED", "EXCEPTION", "CLOSED", "FORCE_CLOSED", "CANCELLED", "REOPENED" ]
+        },
+        "customerId" : {
+          "type" : "string"
+        },
+        "titleId" : {
+          "type" : "string"
+        },
+        "carrierId" : {
+          "type" : "string"
+        },
+        "containerNo" : {
+          "type" : "string"
+        },
+        "containerSize" : {
+          "type" : "string"
+        },
+        "sealNo" : {
+          "type" : "string"
+        },
+        "referenceNo" : {
+          "type" : "string"
+        },
+        "poNo" : {
+          "type" : "string"
+        },
+        "bolNo" : {
+          "type" : "string"
+        },
+        "trackingNo" : {
+          "type" : "string"
+        },
+        "eta" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "appointmentTime" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "shippingInstruction" : {
+          "type" : "string"
+        },
+        "inYardTime" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "devannedTime" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "closeTime" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "note" : {
+          "type" : "string"
+        },
+        "reason" : {
+          "type" : "string"
+        },
+        "itemLines" : {
+          "type" : "array",
+          "items" : {
+            "xml" : {
+              "name" : "itemLines"
+            },
+            "$ref" : "#/definitions/ReceiptItemLineView"
+          }
+        },
+        "pickUpAddress" : {
+          "$ref" : "#/definitions/AddressView"
+        },
+        "createdBy" : {
+          "type" : "string"
+        },
+        "createdWhen" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "updatedBy" : {
+          "type" : "string"
+        },
+        "updatedWhen" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "source" : {
+          "type" : "string",
+          "enum" : [ "EDI", "WEB", "ANDROID", "EXTERNAL_WMS" ]
+        },
+        "companyId" : {
+          "type" : "string"
+        },
+        "isTransload" : {
+          "type" : "boolean"
+        },
+        "receiveType" : {
+          "type" : "string",
+          "enum" : [ "BULK_RECEIVING", "REGULAR_RECEIVING" ]
+        },
+        "receiptType" : {
+          "type" : "string",
+          "enum" : [ "RG", "TT", "MT", "IR", "RDN" ]
+        },
+        "transferOrderId" : {
+          "type" : "string"
+        },
+        "dynamicFields" : {
+          "$ref" : "#/definitions/DynamicFields"
+        },
+        "expirationDate" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "isInventoryConvertToGeneric" : {
+          "type" : "boolean"
+        }
+      }
+    },
+    "PagingParam" : {
+      "type" : "object",
+      "properties" : {
+        "pageNo" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "limit" : {
+          "type" : "integer",
+          "format" : "int64"
+        }
+      }
+    },
+    "ReceiptSearch" : {
+      "type" : "object",
+      "properties" : {
+        "paging" : {
+          "$ref" : "#/definitions/PagingParam"
+        },
+        "sortingFields" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string",
+            "xml" : {
+              "name" : "sortingFields"
+            }
+          }
+        },
+        "sortingOrder" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "receiptIds" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string",
+            "xml" : {
+              "name" : "receiptIds"
+            }
+          }
+        },
+        "receiptId" : {
+          "type" : "string"
+        },
+        "entryId" : {
+          "type" : "string"
+        },
+        "referenceNo" : {
+          "type" : "string"
+        },
+        "poNo" : {
+          "type" : "string"
+        },
+        "eqPoNo" : {
+          "type" : "string"
+        },
+        "bolNo" : {
+          "type" : "string"
+        },
+        "statuses" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string",
+            "xml" : {
+              "name" : "statuses"
+            },
+            "enum" : [ "IMPORTED", "OPEN", "APPOINTMENT_MADE", "IN_YARD", "IN_PROGRESS", "TASK_COMPLETED", "EXCEPTION", "CLOSED", "FORCE_CLOSED", "CANCELLED", "REOPENED" ]
+          }
+        },
+        "excludeStatuses" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string",
+            "xml" : {
+              "name" : "excludeStatuses"
+            },
+            "enum" : [ "IMPORTED", "OPEN", "APPOINTMENT_MADE", "IN_YARD", "IN_PROGRESS", "TASK_COMPLETED", "EXCEPTION", "CLOSED", "FORCE_CLOSED", "CANCELLED", "REOPENED" ]
+          }
+        },
+        "customerIds" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string",
+            "xml" : {
+              "name" : "customerIds"
+            }
+          }
+        },
+        "customerId" : {
+          "type" : "string"
+        },
+        "titleIds" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string",
+            "xml" : {
+              "name" : "titleIds"
+            }
+          }
+        },
+        "carrierIds" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string",
+            "xml" : {
+              "name" : "carrierIds"
+            }
+          }
+        },
+        "containerNos" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string",
+            "xml" : {
+              "name" : "containerNos"
+            }
+          }
+        },
+        "containerNo" : {
+          "type" : "string"
+        },
+        "referenceNos" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string",
+            "xml" : {
+              "name" : "referenceNos"
+            }
+          }
+        },
+        "eqReferenceNo" : {
+          "type" : "string"
+        },
+        "poNos" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string",
+            "xml" : {
+              "name" : "poNos"
+            }
+          }
+        },
+        "bolNos" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string",
+            "xml" : {
+              "name" : "bolNos"
+            }
+          }
+        },
+        "sealNos" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string",
+            "xml" : {
+              "name" : "sealNos"
+            }
+          }
+        },
+        "appointmentTimeFrom" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "appointmentTimeTo" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "closeTimeFrom" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "closeTimeTo" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "shippingInstruction" : {
+          "type" : "string"
+        },
+        "etaFrom" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "etaTo" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "keyword" : {
+          "type" : "string"
+        },
+        "scenario" : {
+          "type" : "string",
+          "enum" : [ "GATE_CHECKIN", "GATE_CHECKOUT", "RECEIVE_TASK", "AUTO_COMPLETE", "ID", "NAME", "STATUS", "DB_ITEM_UNIT", "LOAD_TASK", "WINDOW_CHECKIN_ACTIVITY", "PICK_TASK_BASIC", "PICK_SUB_TASK_BASIC", "PACK_TASK_REQUIRED_FIELD", "TASK_SUMMARY", "GET_TITLE_BY_ITEM", "APPOINTMENT", "GIS_RESOURCE", "GHOST_LOCATION", "GHOST_INVENTORY", "GET_NEARBY_DOCKS", "ORGANIZATION_ONLY_THE_BASIC", "CUSTOMER_APP", "BIG_SCREEN", "EXCLUDE_LOCATIONID" ]
+        },
+        "nullFields" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string",
+            "xml" : {
+              "name" : "nullFields"
+            }
+          }
+        },
+        "isTransload" : {
+          "type" : "boolean"
+        },
+        "receiveType" : {
+          "type" : "string",
+          "enum" : [ "BULK_RECEIVING", "REGULAR_RECEIVING" ]
+        },
+        "receiptType" : {
+          "type" : "string",
+          "enum" : [ "RG", "TT", "MT", "IR", "RDN" ]
+        },
+        "appointmentIsNotEmpty" : {
+          "type" : "boolean"
+        },
+        "itemSpecId" : {
+          "type" : "string"
+        },
+        "trackingNo" : {
+          "type" : "string"
+        },
+        "pickUpAddress" : {
+          "type" : "string"
+        },
+        "limit" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "createdBy" : {
+          "type" : "string"
+        },
+        "createdWhenFrom" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "createdWhenTo" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "updatedWhenFrom" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "updatedWhenTo" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "snList" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string",
+            "xml" : {
+              "name" : "snList"
+            }
+          }
+        },
+        "expirationDateFrom" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "expirationDateTo" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "sources" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string",
+            "xml" : {
+              "name" : "sources"
+            },
+            "enum" : [ "EDI", "WEB", "ANDROID", "EXTERNAL_WMS" ]
+          }
+        }
+      }
+    },
+    "IdsResponse" : {
+      "type" : "object",
+      "properties" : {
+        "ids" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string",
+            "xml" : {
+              "name" : "ids"
+            }
+          }
+        }
+      }
+    },
+    "ReceiptProperty" : {
+      "type" : "object",
+      "properties" : {
+        "field" : {
+          "type" : "string"
+        },
+        "value" : {
+          "type" : "string"
+        }
+      }
+    },
+    "ReceiptPropertySearch" : {
+      "type" : "object",
+      "properties" : {
+        "properties" : {
+          "type" : "array",
+          "items" : {
+            "xml" : {
+              "name" : "properties"
+            },
+            "$ref" : "#/definitions/ReceiptProperty"
+          }
+        }
+      }
+    },
+    "MatchCartonItemLine" : {
+      "type" : "object",
+      "properties" : {
+        "cartonNo" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string",
+            "xml" : {
+              "name" : "cartonNo"
+            }
+          }
+        },
+        "error" : {
+          "type" : "string",
+          "enum" : [ "RECEIPT_CARTON_NOT_EXIST_IN_ORDER", "ORDER_CARTON_NOT_EXIST_IN_RECEIPT" ]
+        }
+      }
+    },
+    "MatchCartonResult" : {
+      "type" : "object",
+      "properties" : {
+        "errors" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string",
+            "xml" : {
+              "name" : "errors"
+            },
+            "enum" : [ "RECEIPT_CARTON_NOT_EXIST_IN_ORDER", "ORDER_CARTON_NOT_EXIST_IN_RECEIPT" ]
+          }
+        },
+        "mismatchCartons" : {
+          "type" : "array",
+          "items" : {
+            "xml" : {
+              "name" : "mismatchCartons"
+            },
+            "$ref" : "#/definitions/MatchCartonItemLine"
+          }
+        }
+      }
+    },
+    "ReceiptItemLineSearch" : {
+      "type" : "object",
+      "properties" : {
+        "receiptIds" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string",
+            "xml" : {
+              "name" : "receiptIds"
+            }
+          }
+        },
+        "itemSpecId" : {
+          "type" : "string"
+        },
+        "itemSpecIds" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string",
+            "xml" : {
+              "name" : "itemSpecIds"
+            }
+          }
+        },
+        "productIds" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string",
+            "xml" : {
+              "name" : "productIds"
+            }
+          }
+        },
+        "supplierIds" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string",
+            "xml" : {
+              "name" : "supplierIds"
+            }
+          }
+        },
+        "ids" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string",
+            "xml" : {
+              "name" : "ids"
+            }
+          }
+        },
+        "snList" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string",
+            "xml" : {
+              "name" : "snList"
+            }
+          }
+        },
+        "poLineNo" : {
+          "type" : "string"
+        }
+      }
+    },
+    "ReceiptItemLine" : {
+      "type" : "object",
+      "properties" : {
+        "requestJson" : {
+          "type" : "string"
+        },
+        "itemSpecId" : {
+          "type" : "string"
+        },
+        "productId" : {
+          "type" : "string"
+        },
+        "lotNo" : {
+          "type" : "string"
+        },
+        "supplierId" : {
+          "type" : "string"
+        },
+        "source" : {
+          "type" : "string",
+          "enum" : [ "EDI", "WEB", "ANDROID", "EXTERNAL_WMS" ]
+        },
+        "unitId" : {
+          "type" : "string"
+        },
+        "qty" : {
+          "type" : "number",
+          "format" : "double"
+        },
+        "palletQty" : {
+          "type" : "number",
+          "format" : "double"
+        },
+        "note" : {
+          "type" : "string"
+        },
+        "snList" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string",
+            "xml" : {
+              "name" : "snList"
+            }
+          }
+        },
+        "poLineNo" : {
+          "type" : "string"
+        },
+        "packagingTypeSpecId" : {
+          "type" : "string"
+        },
+        "dynamicFields" : {
+          "$ref" : "#/definitions/DynamicFields"
+        },
+        "cartons" : {
+          "type" : "array",
+          "items" : {
+            "xml" : {
+              "name" : "cartons"
+            },
+            "$ref" : "#/definitions/Carton"
+          }
+        },
+        "expirationDate" : {
+          "type" : "string",
+          "format" : "date-time"
+        }
+      }
+    },
+    "ReceiptUpdate" : {
+      "type" : "object",
+      "properties" : {
+        "requestJson" : {
+          "type" : "string"
+        },
+        "channel" : {
+          "type" : "string",
+          "enum" : [ "EDI", "WEB", "ANDROID", "EXTERNAL_WMS" ]
+        },
+        "status" : {
+          "type" : "string",
+          "enum" : [ "IMPORTED", "OPEN", "APPOINTMENT_MADE", "IN_YARD", "IN_PROGRESS", "TASK_COMPLETED", "EXCEPTION", "CLOSED", "FORCE_CLOSED", "CANCELLED", "REOPENED" ]
+        },
+        "customerId" : {
+          "type" : "string"
+        },
+        "titleId" : {
+          "type" : "string"
+        },
+        "carrierId" : {
+          "type" : "string"
+        },
+        "containerNo" : {
+          "type" : "string"
+        },
+        "containerSize" : {
+          "type" : "string"
+        },
+        "sealNo" : {
+          "type" : "string"
+        },
+        "referenceNo" : {
+          "type" : "string"
+        },
+        "poNo" : {
+          "type" : "string"
+        },
+        "bolNo" : {
+          "type" : "string"
+        },
+        "trackingNo" : {
+          "type" : "string"
+        },
+        "eta" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "appointmentTime" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "shippingInstruction" : {
+          "type" : "string"
+        },
+        "inYardTime" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "devannedTime" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "note" : {
+          "type" : "string"
+        },
+        "itemLines" : {
+          "type" : "array",
+          "items" : {
+            "xml" : {
+              "name" : "itemLines"
+            },
+            "$ref" : "#/definitions/ReceiptItemLineView"
+          }
+        },
+        "unsetFields" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string",
+            "xml" : {
+              "name" : "unsetFields"
+            }
+          }
+        },
+        "isTransload" : {
+          "type" : "boolean"
+        },
+        "receiveType" : {
+          "type" : "string",
+          "enum" : [ "BULK_RECEIVING", "REGULAR_RECEIVING" ]
+        },
+        "receiptType" : {
+          "type" : "string",
+          "enum" : [ "RG", "TT", "MT", "IR", "RDN" ]
+        },
+        "pickUpAddress" : {
+          "$ref" : "#/definitions/AddressView"
+        },
+        "dynamicFields" : {
+          "$ref" : "#/definitions/DynamicFields"
+        },
+        "expirationDate" : {
+          "type" : "string",
+          "format" : "date-time"
+        }
+      }
+    },
+    "ReceiptCreate" : {
+      "type" : "object",
+      "required" : [ "Customer Name" ],
+      "properties" : {
+        "status" : {
+          "type" : "string",
+          "enum" : [ "IMPORTED", "OPEN", "APPOINTMENT_MADE", "IN_YARD", "IN_PROGRESS", "TASK_COMPLETED", "EXCEPTION", "CLOSED", "FORCE_CLOSED", "CANCELLED", "REOPENED" ]
+        },
+        "Customer Name" : {
+          "type" : "string",
+          "example" : "ORG-1",
+          "xml" : {
+            "name" : "customerId"
+          },
+          "description" : "customer of receipt"
+        },
+        "titleId" : {
+          "type" : "string",
+          "description" : "title of inventory"
+        },
+        "carrierId" : {
+          "type" : "string",
+          "description" : "carrier of receipt"
+        },
+        "containerNo" : {
+          "type" : "string"
+        },
+        "containerSize" : {
+          "type" : "string"
+        },
+        "sealNo" : {
+          "type" : "string"
+        },
+        "referenceNo" : {
+          "type" : "string"
+        },
+        "poNo" : {
+          "type" : "string"
+        },
+        "bolNo" : {
+          "type" : "string"
+        },
+        "trackingNo" : {
+          "type" : "string"
+        },
+        "eta" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "appointmentTime" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "shippingInstruction" : {
+          "type" : "string"
+        },
+        "inYardTime" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "devannedTime" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "note" : {
+          "type" : "string"
+        },
+        "source" : {
+          "type" : "string",
+          "enum" : [ "EDI", "WEB", "ANDROID", "EXTERNAL_WMS" ]
+        },
+        "itemLines" : {
+          "type" : "array",
+          "items" : {
+            "xml" : {
+              "name" : "itemLines"
+            },
+            "$ref" : "#/definitions/ReceiptItemLine"
+          }
+        },
+        "isTransload" : {
+          "type" : "boolean"
+        },
+        "receiveType" : {
+          "type" : "string",
+          "enum" : [ "BULK_RECEIVING", "REGULAR_RECEIVING" ]
+        },
+        "receiptType" : {
+          "type" : "string",
+          "enum" : [ "RG", "TT", "MT", "IR", "RDN" ]
+        },
+        "transferOrderId" : {
+          "type" : "string"
+        },
+        "pickUpAddress" : {
+          "$ref" : "#/definitions/AddressView"
+        },
+        "dynamicFields" : {
+          "$ref" : "#/definitions/DynamicFields"
+        },
+        "expirationDate" : {
+          "type" : "string",
+          "format" : "date-time"
+        }
+      }
+    }
+  }
+}
