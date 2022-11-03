@@ -1,5 +1,5 @@
-*.js linguist-language=Nodejs
-*.css linguist-language=Nodejs
-*.html linguist-language=Nodejs
-*.png linguist-language=Nodejs
-*.jpg linguist-language=Nodejs
+*.js linguist-language=Node
+*.css linguist-language=Node
+*.html linguist-language=Node
+*.png linguist-language=Node
+*.jpg linguist-language=Node
